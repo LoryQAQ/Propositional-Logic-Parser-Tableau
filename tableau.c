@@ -25,14 +25,14 @@ char bc[3] = {"v>^"};
 //Check what is in front and back of a char to ensure it is within the definition
 int front_back(char c, char before, char after){
     int i, k;
-    for(int i = 0; i < 3; i++){
+    for(i = 0; i < 3; i++){
         if(prop[i] == c){
-            for(int k = 0; k < 3; k++){
+            for(k = 0; k < 3; k++){
                 if(prop[k] == before || prop[k] == after || '-' == after){return 0;}
             }
         }
         else if(bc[i] == c){
-            for(int k = 0; k < 3; k++){
+            for(k = 0; k < 3; k++){
                 if(bc[k] == before || bc[k] == after || '-' == before){return 0;}
             }
         };
