@@ -24,6 +24,7 @@ char bc[3] = {"v>^"};
 
 //Check what is in front and back of a char to ensure it is within the definition
 int front_back(char c, char before, char after){
+    int i, k;
     for(int i = 0; i < 3; i++){
         if(prop[i] == c){
             for(int k = 0; k < 3; k++){
@@ -41,7 +42,8 @@ int front_back(char c, char before, char after){
 
 //check if the char after is what we doesn't want
 int check_after(char c,char after, char d, char *arr){
-    for(int i = 0; i < 3; i++){
+    int i;
+    for(i = 0; i < 3; i++){
         if(arr[i] == c && d == after){return 0;}
     }
     return 1;
@@ -49,7 +51,8 @@ int check_after(char c,char after, char d, char *arr){
 
 //return 1 if the char is a binary connective
 int in_bc(char c){
-    for(int i = 0; i < 3; i++){
+    int i;
+    for(i = 0; i < 3; i++){
         if(bc[i] == c){return 1;}
     }
     return 0;
@@ -57,7 +60,8 @@ int in_bc(char c){
 
 //return 1 if the char is a proposition
 int check_prop(char c){
-    for(int i = 0; i < 3; i++){
+    int i;
+    for(i = 0; i < 3; i++){
         if(c == prop[i]){return 1;}
     }
     return 0;
@@ -69,7 +73,8 @@ int check_fmla(char *c){
     int parenCount = 0;
     int openParenCount = 0;
     int bcCount = 0;
-    for(int i = 0; i < strlen(c); i++){
+    int i;
+    for(i = 0; i < strlen(c); i++){
         if(c[i] == '('){
             parenCount += 1;
             openParenCount += 1;
@@ -106,7 +111,8 @@ int parse(char *g){
     }
     if(len > 1){
         if(g[0] == '-'){
-            for(int i = 1; i < strlen(g); i++) {
+            int i;
+            for(i = 1; i < strlen(g); i++) {
                 if(g[i] != '-') {
                     if (check_prop(g[i]) == 1) { return 2; }
                     else {
@@ -126,7 +132,8 @@ int parse(char *g){
 //find the index of the binaray connective which serves at the split point
 int check_bc(char *g){
     int parenCount = 0;
-    for(int i = 0; i < strlen(g); i++){
+    int i;
+    for(i = 0; i < strlen(g); i++){
         if(g[i] == '('){
             parenCount += 1;
         }
@@ -142,7 +149,8 @@ int check_bc(char *g){
 char *partone(char *g){
     int index = check_bc(g);
     char *first = (char*)malloc(index * sizeof(char));
-    for(int i = 0; i < (index - 1); i++){
+    int i;
+    for(i = 0; i < (index - 1); i++){
         first[i] = g[i+1];
     }
     first[index - 1] = '\0';
@@ -153,7 +161,8 @@ char *partone(char *g){
 char *parttwo(char *g){
     int index = check_bc(g);
     char *second = (char*)malloc((strlen(g) - index - 1) * sizeof(char));
-    for(int i = 0; i < (strlen(g) - index - 2); i++){
+    int i;
+    for(i = 0; i < (strlen(g) - index - 2); i++){
         second[i] = g[index + 1 + i];
     }
     second[strlen(g) - index - 2] = '\0';
@@ -163,7 +172,8 @@ char *parttwo(char *g){
 //get the substring after the first char
 char *tail(char *g){
     char *result = (char*) malloc(strlen(g) * sizeof(char));
-    for(int i = 0; i < strlen(g) - 1; i++){
+    int i;
+    for(i = 0; i < strlen(g) - 1; i++){
         result[i] = g[i+1];
     }
     result[strlen(g)-1] = '\0';
@@ -223,7 +233,8 @@ void add_left(struct tableau *tab, char *g){
 char *negate(char *g){
     char *result = (char*) malloc((strlen(g) + 2) * sizeof(char));
     result[0] = '-';
-    for(int i = 1; i < strlen(g) + 1; i++){
+    int i;
+    for(i = 1; i < strlen(g) + 1; i++){
         result[i] = g[i-1];
     }
     result[strlen(g) + 1] = '\0';
@@ -307,7 +318,8 @@ int check_child(struct tableau *tab, int *lits, int *neglits){
             }
         }
     }
-    for(int i = 0; i < 3; i++){
+    int i;
+    for(i = 0; i < 3; i++){
         if(newLits[i] == 1 && newNeglits[i] == 1) return 1;
     }
 
