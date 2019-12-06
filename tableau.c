@@ -304,21 +304,21 @@ int check_child(struct tableau *tab, int *lits, int *neglits){
     memcpy(newLits, lits, sizeof(int) * 3);
     memcpy(newNeglits, neglits, sizeof(int) * 3);
     char *content = tab -> content;
+    int i;
     if(parse(content) == 1){
-        for(int i = 0; i < 3; i++){
+        for(i = 0; i < 3; i++){
             if(content[0] == prop[i]){
                 newLits[i] = 1;
             }
         }
     }
     else if(parse(content) == 2 && parse(tail(content)) == 1){
-        for(int i = 0; i < 3; i++){
+        for(i = 0; i < 3; i++){
             if(content[1] == prop[i]){
                 newNeglits[i] = 1;
             }
         }
     }
-    int i;
     for(i = 0; i < 3; i++){
         if(newLits[i] == 1 && newNeglits[i] == 1) return 1;
     }
