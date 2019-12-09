@@ -16,5 +16,5 @@ I told you, -(p^q^r) is not a formula.
 (-p^p) is not satisfiable.
 (p(^q)) is not a formula.  
 I told you, (p(^q)) is not a formula.
-(((p>q)>(q>p))^-q) is a binary. The first part is ((p>q)>(q>p)) and the second part is -q  
-(((p>q)>(q>p))^-q) is satisfiable.
+-(p>(q>p)) is a negation.  
+-(p>(q>p)) is not satisfiable.

@@ -253,7 +253,7 @@ void alpha(struct tableau *tab, char *g){
     }
     else if(get_type(g) == 2 && get_bc(g) == '>'){
         add_left(tab, partone(tail(g)));
-        add_left(tab, parttwo(tail(g)));
+        add_left(tab, negate(parttwo(tail(g))));
     }
     else if(get_type(g) == 3){
         add_left(tab, tail(tail(g)));
